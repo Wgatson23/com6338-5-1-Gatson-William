@@ -1,30 +1,30 @@
-var form = document.getElementById('add-todo');
-var input = document.getElementById('todo-input');
-var list = document.getElementById('todo-list');
+var form = document.getElementById("add-todo");
+var listItems = document.getElementById("todo-list");
+var buttons;
 
-form.onsubmit = function(event) {
-    event.preventDefault();
-    var text = input.value;
-    var item = document.createElement('li');
-    item.textContent = text;
-    list.appendChild(item);
-    input.value = '';
-    }
-    addEventListener(textValue);
-    form.reset();
-    }
+form.onsubmit = function (e) {
+	var textValue = document.querySelector("input").value;
+	if (textValue == "" || textValue.trim().length === 0) {
+		form.reset();
+		return;
+	}
+	addLi(textValue);
+	form.reset();
+};
 
-    function addEventListener(textValue) {
-        var item = document.createElement('li');
-        item.textContent = textValue;
-        list.appendChild(item);
-    }
+function addLi(item) {
+	var li = document.createElement("li");
+	var btn = document.createElement("button");
+	li.appendChild(btn);
+	btn.innerHTML = item;
+	listItems.appendChild(li);
+	buttons = listItems.querySelectorAll("button");
+}
 
-    list.addEventListener('click', function(event) {
-      if (event.target.style.textDecoration != "line-through"){
-        event.target.style.textDecoration = "line-through";
-
-        } else {
-          event.target.style.textDecoration = "none";
-        }
-        
+listItems.addEventListener("click", function (e) {
+	if (e.target.style.textDecoration != "line-through") {
+		e.target.style.textDecoration = "line-through";
+	} else if ((e.target.style.textDecoration = "line-through")) {
+		e.target.parentElement.remove();
+	}
+});
