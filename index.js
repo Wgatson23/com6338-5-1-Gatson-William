@@ -13,6 +13,7 @@ form.onsubmit = function(event) {
     addEventListener(textValue);
     form.reset();
     }
+
     function addEventListener(textValue) {
         var item = document.createElement('li');
         item.textContent = textValue;
@@ -20,9 +21,10 @@ form.onsubmit = function(event) {
     }
 
     list.addEventListener('click', function(event) {
-      if (event.target.tagName === 'LI') {
-        event.target.classList.toggle('done');
-        if (event.target.classList.contains('done')) {
-          event.target.classList.remove('done');
+      if (event.target.style.textDecoration != "line-through"){
+        event.target.style.textDecoration = "line-through";
+
+        } else {
+          event.target.style.textDecoration = "none";
         }
-        }
+        
